@@ -13,7 +13,7 @@ class Dynamo:
     def get(self, table, key):
         """Keys can be dictionaires"""
         table = self.__get_table(table)
-        return table.get_item(Key=make_key(key))
+        return table.get_item(Key=make_key(key))['Item']
 
     def set(self, table, key, item):
         """Set an item in a table, key values override item"""
@@ -22,11 +22,11 @@ class Dynamo:
         table = self.__get_table(table)
         return table.put_item(Item=item)
 
-
     def __get_table(self, table):
         return self.database.Table(table)
 
 def make_key(key):
+    """Wrapper around getting keys"""
     name = key.get_primary_key_name()
     value = key.get_primary_key_value()
     return {name: value}
