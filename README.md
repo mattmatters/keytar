@@ -1,5 +1,7 @@
 # Key Value Database Wrapper
 
+[![PyPI version](https://badge.fury.io/py/keytar.svg)](https://badge.fury.io/py/keytar)
+
 _Prevent vendor lock-in with shared functionality._
 
 This is a pip package aimed at easing switching between multiple NoSql databases.
