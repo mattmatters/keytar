@@ -11,8 +11,8 @@ setup(
     license='MIT',
     url='https://github.com/mattmatters/keytar',
     download_url='https://github.com/mattmatters/keytar/archive/0.1.0.tar.gz',
-    py_modules=['faceitize'],
-    packages=['faceitize'],
+    py_modules=['keytar'],
+    packages=['keytar'],
     install_requires=[
         'google',
     ],
