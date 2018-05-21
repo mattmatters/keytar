@@ -29,6 +29,22 @@ class Datastore:
         key = self.__make_key(table, key)
         return self.__database.put(make_entity(key, item))
 
+    def delete(self, table, key):
+        """Delete record"""
+        key = self.__make_key(table, key)
+        return self.__database.delete(key)
+
+    def update(self, table, key, items):
+        """Update an item"""
+        with self.__database.transaction():
+            key = self.__make_key(table, key)
+            val = self.__database.get(key)
+
+            for dict_key, dict_value in items.items():
+                val[dict_key] = val[dict_value]
+
+            self.__database.put(val)
+
     def random_keys(self, table, limit=10):
         """Get random keys for kind, fairly inefficient"""
         keys = [i.id() for i in self.__get_keys(table)]
